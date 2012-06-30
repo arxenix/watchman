@@ -18,7 +18,7 @@ public class Util {
         plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
             public void run() {
                 plugin.getServer().setWhitelist(true);
-                if(plugin.getConfig().getBoolean("kick-all-if-no-watchmen-online?")==true){
+                if(plugin.getConfig().getBoolean("kick-all-mode")==true){
                     String kickmessage = plugin.getConfig().getString("kick-message");
                     for (Player p : plugin.getServer().getOnlinePlayers()) {
                         if (!p.isOp() && !p.isWhitelisted()) {

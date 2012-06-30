@@ -23,7 +23,7 @@ public class Watchman extends JavaPlugin {
 
     public void loadConfig() {
         getConfig().addDefault("whitelist-delay", 0);
-        getConfig().addDefault("kick-all-if-no-watchmen-online?", true);
+        getConfig().addDefault("kick-all-mode", true);
         getConfig().addDefault("kick-message", "There are no watchmen online!");
         getConfig().addDefault("whitelist-message", "There are no watchmen online!");
         getConfig().options().copyDefaults(true);
