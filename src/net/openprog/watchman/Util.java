@@ -1,11 +1,41 @@
 package net.openprog.watchman;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Ariel
- * Date: 6/30/12
- * Time: 11:23 AM
- * To change this template use File | Settings | File Templates.
- */
+import org.bukkit.entity.Player;
+
 public class Util {
+    private Watchman plugin;
+
+    public boolean anyWatchmen() {
+        for (Player p : plugin.getServer().getOnlinePlayers()) {
+            if (p.hasPermission("watchman.watchman")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void whitelistServer() {
+        plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+            public void run() {
+                plugin.getServer().setWhitelist(true);
+            }
+        }, s2t(plugin.getConfig().getInt("whitelist-delay")));
+    }
+
+    public void unWhitelistServer() {
+        plugin.getServer().setWhitelist(false);
+    }
+
+    public long s2t(int s) {
+        int ticks = s*20;
+        return ticks;
+    }
+
+    public void reloadWatchmen() {
+        if (anyWatchmen()) {
+            unWhitelistServer();
+        } else {
+            whitelistServer();
+        }
+    }
 }
