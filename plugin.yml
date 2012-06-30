@@ -1,0 +1,9 @@
+name: Watchman
+main: net.openprog.watchman.Watchman
+version: 0.1
+description: This plugin prevents people from logging on unless there is someone with the permission watchman.watchman online.
+authors: [Sushi, bobacadodl]
+permissions:
+  watchman.watchman:
+    description: Specifies the user as a watchman.
+    default: op
